@@ -4,15 +4,15 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+    ('Your Name', 'your_email@example.com'),
 )
 
 MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '',                      # Or path to database file if using sqlite3.
+        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': '/tmp/django-album.db',  # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -149,3 +149,22 @@ LOGGING = {
         },
     }
 }
+
+#############################################################
+# Django Album configuration
+#
+import os
+PROJECT_ROOT = os.path.dirname(__file__)
+
+#Override defaults
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, '..', 'media')
+MEDIA_URL = '/media/'
+
+#Add app to project
+# sudo pip install django-backbone (might help)
+
+INSTALLED_APPS += ('backbone',
+                   'django_album',)
+
+
+
