@@ -7,6 +7,7 @@ The plan
 ========
 
 Album
+-----
 
 Make an album that store all images in directories that have the same name
 as the album so its easy to just take one group of images to place in eg.
@@ -17,7 +18,7 @@ not loose track of all images (copies) there will not be any copies just hard
 links. Albums can have sub albums if you like
 
 eg:
-
+<pre>
   Album1
      image1.jpg --> inode 123
      image2.png -->  inode 456
@@ -32,21 +33,24 @@ eg:
         :
     Maria
         :
+</pre>
 
 image1.jpg is the _same_ in all Albums not an copy, the same!
 
 
 
 All images will also be placed in a timeline album.
-
+```
 eg:
   Timeline Album
     <year>
       <month>
         <day>
           image1 --> inode 123
+```
 
 Tags
+----
 
 Images can have tags, these tags are more for django to limit view access to
 images. Tags will be manage on the admin page to on whom are allowed to view the
@@ -59,6 +63,7 @@ Eg
 
 
 Images
+------
 
 All images will have the name given by the user/camera if possible. Note images
 need to have uniq name through out the whole system. Conflicting name will be
@@ -66,12 +71,14 @@ handled by applying _[<number>] in the file name. _
 
 
 GUI
+---
 
 The whole GUI will be made in backbone/handelbars to make an simple and snappy
 viewment.
 
 
 Upload GUI
+----------
 
 When images have been uplaoded ether by archive (zip/tar) or by adding files to
 upload directory. If images are in a directory the album-app asums that the
@@ -87,22 +94,24 @@ browser. The user gets three options. Keep, Maybe, Delete. When pressing one
 of those next image will slide in from the right. In the background the
 following will happend:
 
-  Keep
-    1, Move to Timeline album
-    2, Link to origin album name (if any)
-    3, Get tag: Private
-    4, Get tag: Keep (needed for later processing)
+Keep
 
-  Maybe
-    1, Link to origin album name (if any)
-    2, Get tag: Private
-    3, Get tag: Maybe (needed for later processing)
+1. Move to Timeline album
+2. Link to origin album name (if any)
+3. Get tag: Private
+4. Get tag: Keep (needed for later processing)
 
-  Delete
-    1, Move to delete folder
-    2, Get tag: Delete
-    3, Get delete on the filesystem a few days later or when someone press the
-       right button.
+Maybe
+
+1. Link to origin album name (if any)
+2. Get tag: Private
+3. Get tag: Maybe (needed for later processing)
+
+Delete
+
+1. Move to delete folder
+2. Get tag: Delete
+3. Get delete on the filesystem a few days later or when someone press the right button.
 
 Step two: Organice keep images
 
@@ -122,7 +131,8 @@ remove the tag Maybe. Can also be deleted
 
 On all images there is the possiblity to add an caption.
 
-View the images.
+View GUI
+--------
 
 If anonymous user view only public images. Also do not view album that is empty
 or due to access limits appere to be empty.
@@ -135,9 +145,9 @@ also those images with these tags are allowed to be viewed.
 
 The viewing will be done in 3 steps.
 
-1, All albums (and random tumbnail)
-2, Thumbnails of all images (backbone)
-3, Large version where images slide in from right when clicking next (backbone)
+1. All albums (and random tumbnail)
+2. Thumbnails of all images (backbone)
+3. Large version where images slide in from right when clicking next (backbone)
 
 
 
