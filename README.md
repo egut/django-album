@@ -3,6 +3,11 @@ django-album
 
 I wanted to build an photo album, so I did.
 
+Version 1:
+<pre>
+0% [=>                                 ] 100%
+</pre>
+
 The plan
 ========
 
