@@ -8,6 +8,12 @@ Version 1:
 0% [=>                                 ] 100%
 </pre>
 
+Requirement
+===========
+
+* Django-Backbone (https://github.com/zmathew/django-backbone)
+
+
 The plan
 ========
 

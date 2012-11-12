@@ -19,6 +19,18 @@ urlpatterns = patterns('',
 
 
 ######################################################################
+# Stuff bleow is needed for django-album, if you already have these
+# then you do not need to add them again.
+#
+
+#Find all the backbones components
+import backbone
+backbone.autodiscover()
+
+urlpatterns += patterns('',
+    (r'^backbone/', include(backbone.site.urls)),
+)
+
 # To display MEDIA files in DEVELOPMENT
 # For production see:
 # https://docs.djangoproject.com/en/dev/howto/static-files/#serving-static-files-in-production
@@ -31,5 +43,7 @@ urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # https://docs.djangoproject.com/en/dev/howto/static-files/#serving-static-files-in-production
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns += staticfiles_urlpatterns()
+
+
 
 

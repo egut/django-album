@@ -1,19 +1,80 @@
 # -*- coding: utf-8 -*-
 from django.utils.translation import ugettext as _
+from django.template.defaultfilters import slugify
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Album(models.Model):
     """
+    The album will have some description and images.
 
+    It will also have an path so that all images will be collected in one
+    directory. This to make it easyer to take one album and move it to an
+    photo digital photo frame.
+
+    Albums can also placed in albums
 
     """
 
+    name = models.CharField(
+        max_length = 200,
+        help_text = _("The album name")
+    )
 
-class Tag(models.Model):
-    """
+    slug = models.SlugField(
+        max_length = 50,
+        unique = True,
+        help_text = _("Short URL frendly name of the album")
+    )
 
-    """
+    description = models.TextField(
+        help_text = _("An nice description of the album")
+    )
+
+    images = models.ManyToManyField(
+        'Image',
+        help_text = _("The images that belongs to this album")
+    )
+
+    parent_album = models.ForeignKey(
+        'self',
+        blank = True,
+        null = True,
+        help_text = _("Link to the parent album so that album can be grouped")
+    )
+
+    def save(self, *args, **kwargs):
+        """
+        Generate the slug the first time this album is saved.
+        """
+        if not self.id:
+            self.slug = slugify(self.name)
+
+        super(Album, self).save(*args, **kwargs)
+
+    def __unicode__(self):
+        """
+        The name to return when litsting and saving in python
+        """
+        return self.name
+
+    @models.permalink
+    def get_absolute_url(self):
+        """
+        Return the path to this album
+
+        ToDo: Add support for patent directories
+        """
+
+        return self.slug
+
+
+
+#class Meta(models.Model):
+#    """
+#    ToDo: Add meta data later
+#    """
 
 
 class Image(models.Model):
