@@ -1,0 +1,8 @@
+//Django-album CSS
+
+//This will define the size of the album
+.django-album {
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+}

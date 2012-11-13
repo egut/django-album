@@ -164,7 +164,7 @@ MEDIA_URL = '/media/'
 # sudo pip install django-backbone (might help)
 
 INSTALLED_APPS += ('backbone',
-                   'django_album',)
+                   'album',)
 
 
 

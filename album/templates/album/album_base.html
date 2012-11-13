@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+{% load i18n %}
+{% load url from future %}
+<html xmlns="http://www.w3.org/1999/xhtml" >
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" type="text/css" href="/static/css/django-album.css"  title="default" />
+        <title>django-album - {% block title %}{% endblock %}</title>
+        {% block header %}
+        {% endblock %}
+    </head>
+    <body>
+        <!--
+        When you integrate django-album in your site just override this page
+        in your default templates.
+
+        Note that django-album css will be relative to <div class="django-album"></div>
+        All content in django-album-div should not change the size of it
+        -->
+        <div class="django-album">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </body>
+</html>
