@@ -33,7 +33,7 @@ urlpatterns += patterns('',
 
 #Add all django-album parts
 urlpatterns += patterns('',
-    (r'^album/', include('django_album.urls'))
+    (r'^album/', include('album.urls'))
 )
 
 # To display MEDIA files in DEVELOPMENT
