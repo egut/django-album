@@ -28,7 +28,12 @@ import backbone
 backbone.autodiscover()
 
 urlpatterns += patterns('',
-    (r'^backbone/', include(backbone.site.urls)),
+    (r'^backbone/', include(backbone.site.urls))
+)
+
+#Add all django-album parts
+urlpatterns += patterns('',
+    (r'^album/', include('django_album.urls'))
 )
 
 # To display MEDIA files in DEVELOPMENT
