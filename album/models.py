@@ -17,15 +17,15 @@ class Album(models.Model):
 
     """
 
+    slug = models.SlugField(
+        max_length = 75,
+        primary_key = True,
+        help_text = _("Short URL frendly name of the album")
+    )
+
     name = models.CharField(
         max_length = 200,
         help_text = _("The album name")
-    )
-
-    slug = models.SlugField(
-        max_length = 50,
-        unique = True,
-        help_text = _("Short URL frendly name of the album")
     )
 
     description = models.TextField(
@@ -34,6 +34,8 @@ class Album(models.Model):
 
     images = models.ManyToManyField(
         'Image',
+        null = True,
+        blank = True,
         help_text = _("The images that belongs to this album")
     )
 
@@ -48,7 +50,7 @@ class Album(models.Model):
         """
         Generate the slug the first time this album is saved.
         """
-        if not self.id:
+        if not self.slug:
             self.slug = slugify(self.name)
 
         super(Album, self).save(*args, **kwargs)

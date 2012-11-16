@@ -6,6 +6,17 @@
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <link rel="stylesheet" type="text/css" href="/static/css/album.css"  title="default" />
         <title>django-album - {% block title %}{% endblock %}</title>
+        <script>
+            // (Optional) Do this if you are using csrf protection:
+            // See: https://docs.djangoproject.com/en/dev/ref/contrib/csrf/
+            var oldSync = Backbone.sync;
+            Backbone.sync = function(method, model, options) {
+                options.beforeSend = function(xhr){
+                    xhr.setRequestHeader('X-CSRFToken', '{{ csrf_token }}');
+                };
+                return oldSync(method, model, options);
+            };
+        </script>
         {% block header %}
         {% endblock %}
     </head>
